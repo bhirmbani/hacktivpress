@@ -1,6 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+  <div class="ui grey fixed inverted menu"> 
+      <div class="ui container"> 
+        <a href="#" class="header item">
+        <i class="fa fa-bullhorn" aria-hidden="true"></i>
+          Hacktivpress
+        </a>
+        <!-- <a v-if="isLogin">
+          <router-link class="header item" :to="{name: 'AddTodo'}">Add New Todo</router-link>
+        </a>
+        <a v-if="isLogin" class="header item">
+          Welcome, {{loggedUserData.name}}
+        </a> -->
+        <!-- <a href="#/" @click="onLogout(emptyLoggedUserData)" v-if="isLogin" class="header item">
+          Logout
+        </a> -->
+      </div>
+    </div> 
     <router-view></router-view>
   </div>
 </template>
@@ -12,12 +28,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
