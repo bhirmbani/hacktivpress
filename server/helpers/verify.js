@@ -27,4 +27,12 @@ methods.isLogin = (req, res, next) => {
   })
 }
 
+methods.decode = (token) => {
+  try {
+    return jwt.verify(token, process.env.SECRET_KEYS)
+  } catch(err) {
+    return err;
+  }
+}
+
 module.exports = methods;

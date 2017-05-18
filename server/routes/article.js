@@ -11,6 +11,8 @@ router.get('/:articleId', auth.isLogin, Article.getOne);
 
 router.get('/findByCategory/:category', auth.isLogin, Article.getByCategory);
 
+router.get('/findByAuthor/:userId', auth.isLogin, Article.getByAuthor);
+
 router.put('/edit/:articleId', auth.isLogin, Article.edit);
 
 router.delete('/delete/:articleId', auth.isLogin, Article.delete);

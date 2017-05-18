@@ -1,11 +1,16 @@
 const Article = require('../models/article');
+const helperTo = require('../helpers/verify');
 const methods = {};
 
 methods.create = (req, res, next) => {
+  let decoded = helperTo.decode(req.headers.token);
+  console.log('this is decoded in create article controller');
+  console.log(decoded);
   var title = req.body.title;
   var content = req.body.content;
   var category = req.body.category;
   Article.create({
+    author: decoded._id,
     title: title,
     content: content,
     category: category
@@ -72,6 +77,18 @@ methods.getByCategory = (req, res, next) => {
       res.json({error: err, success: false});
     } else {
       res.json({articles: articles, success: true});
+    }
+  })
+}
+
+methods.getByAuthor = (req, res, next) => {
+  let author = req.params.userId;
+  Article.find({}).populate('author')
+  .exec((err, authors) => {
+    if(err) {
+      res.json({error: err, success: false});
+    } else {
+      res.json({authors: authors, success: true});
     }
   })
 }
