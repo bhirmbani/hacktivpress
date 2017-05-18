@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Main from '@/components/Main'
 import AddArticle from '@/components/AddArticle'
+import Edit from '@/components/Edit'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path:'/add-article',
       name: 'AddArticle',
       component: AddArticle
+    },
+    {
+      path:'/edit/:articleId',
+      name: 'Edit',
+      component: Edit
     }
   ]
 })

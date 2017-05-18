@@ -10,7 +10,9 @@
         </div>
         <div class="extra">
           <a @click="confirmDelete(article._id)" class="label ui tiny red"><i class="trash icon"></i>Delete</a>
-          <a class="label ui tiny green" href=""><i class="edit icon"></i>Edit</a>
+          <a @click="onClickEdit(article)">
+              <router-link :to="{name: 'Edit', params: {articleId: article._id}}" class="label ui tiny green"><i class="edit icon"></i>Edit</router-link>
+          </a>
         </div>
       </div>
     </div>
@@ -32,17 +34,22 @@ export default {
   methods: {
     ...mapActions([
       'getArticles',
-      'deleteArticle'
+      'deleteArticle',
+      'getOneArticle'
   ]),
     confirmDelete(articleId) {
       var confirmed = confirm('Are you sure want to delete this article?');
       if(confirmed)
         this.deleteArticle(articleId)
+    },
+    onClickEdit(article) {
+      this.getOneArticle(article)
     }
   },
   computed: {
     ...mapGetters([
-      'articles'
+      'articles',
+      'newArticle'
   ])
   },
   mounted() {

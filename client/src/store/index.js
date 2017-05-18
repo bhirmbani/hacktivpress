@@ -63,6 +63,9 @@ const mutations = {
   },
   ADD_ARTICLE(state, article) {
     state.newArticle = article;
+  },
+  GET_ONE(state, article) {
+    state.newArticle = article;
   }
 }
 
@@ -124,6 +127,18 @@ const actions = {
       console.log('ADD_ARTICLE', res.data.article);
       commit('ADD_ARTICLE', res.data.article);
     })
+  },
+  editArticle({commit}, article) {
+    axios.put(`http://localhost:3000/api/article/edit/${article._id}`, {
+      title: article.title,
+      content: article.content,
+      category: article.category
+    }, {headers: {token: localStorage.getItem('token')}}).then(res => {
+      console.log(res.data.article);
+    })
+  },
+  getOneArticle({commit}, article) {
+    commit('GET_ONE', article);
   }
 }
 
