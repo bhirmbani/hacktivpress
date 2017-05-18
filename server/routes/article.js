@@ -7,4 +7,6 @@ router.post('/create', auth.isLogin, Article.create);
 
 router.get('/', auth.isLogin, Article.getAll);
 
+router.get('/:articleId', auth.isLogin, Article.getOne);
+
 module.exports = router;
