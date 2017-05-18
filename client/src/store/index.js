@@ -41,6 +41,9 @@ const mutations = {
   LOGIN(state, payload) {
     state.login.username = payload.username;
     state.login.password = payload.password;
+  },
+  REGISTER(state, payload) {
+    state.register = payload;
   }
 }
 
@@ -59,12 +62,26 @@ const actions = {
       localStorage.setItem('role', res.data.user.role);
       window.location.href = '#/main';
     })
+  },
+  register({commit}, data) {
+    axios.post(`http://localhost:3000/api/user/signup/`, {
+      name: data.name,
+      username: data.username,
+      password: data.password
+    }).then(res => {
+      window.location.href = '#/login';
+      commit('REGISTER', res.data.user);
+      console.log('REGISTER DONE', res.data.user);
+    })
   }
 }
 
 const getters = {
   loginData(state) {
     return state.login;
+  },
+  registerData(state) {
+    return state.register;
   }
 }
 
