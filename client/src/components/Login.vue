@@ -20,7 +20,7 @@
             <input type="password" v-model="loginData.password" name="password" placeholder="Password">
           </div>
         </div>
-        <div @click="" class="ui fluid large grey submit button">Login</div>
+        <div @click="login(loginData)" class="ui fluid large grey submit button">Login</div>
       </div>
 
       <div class="ui error message"></div>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
 
   name: 'Login',
@@ -47,9 +49,23 @@ export default {
     return {
 
     };
+  },
+  methods: {
+    ...mapActions([
+      'login',
+  ])
+  },
+  computed: {
+    ...mapGetters([
+      'loginData',
+  ])
   }
 };
 </script>
 
 <style lang="css" scoped>
+#login-form {
+    width: 50%;
+    margin: 0 auto;
+  }
 </style>
