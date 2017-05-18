@@ -44,6 +44,9 @@ const mutations = {
   },
   REGISTER(state, payload) {
     state.register = payload;
+  },
+  GET_ARTICLES(state, payload) {
+    state.articles = payload
   }
 }
 
@@ -73,6 +76,12 @@ const actions = {
       commit('REGISTER', res.data.user);
       console.log('REGISTER DONE', res.data.user);
     })
+  },
+  getArticles({commit}) {
+    axios.get('http://localhost:3000/api/article/', {headers: {token: localStorage.getItem('token')}}).then(res => {
+      console.log('GET_ARTICLES', res.data.articles);
+      commit('GET_ARTICLES', res.data.articles);
+    })
   }
 }
 
@@ -82,6 +91,9 @@ const getters = {
   },
   registerData(state) {
     return state.register;
+  },
+  articles(state) {
+    return state.articles;
   }
 }
 
