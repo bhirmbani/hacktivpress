@@ -9,7 +9,7 @@
           <p>{{article.content}}</p>
         </div>
         <div class="extra">
-          <a class="label ui tiny red" href=""><i class="trash icon"></i>Delete</a>
+          <a @click="confirmDelete(article._id)" class="label ui tiny red"><i class="trash icon"></i>Delete</a>
           <a class="label ui tiny green" href=""><i class="edit icon"></i>Edit</a>
         </div>
       </div>
@@ -32,7 +32,13 @@ export default {
   methods: {
     ...mapActions([
       'getArticles',
-  ])
+      'deleteArticle'
+  ]),
+    confirmDelete(articleId) {
+      var confirmed = confirm('Are you sure want to delete this article?');
+      if(confirmed)
+        this.deleteArticle(articleId)
+    }
   },
   computed: {
     ...mapGetters([

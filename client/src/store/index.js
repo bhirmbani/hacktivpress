@@ -54,6 +54,10 @@ const mutations = {
   },
   EMPTY_ARTICLES(state) {
     state.articles = [];
+  },
+  DELETE_ARTICLE(state, article) {
+    let articleIdx = state.articles.findIndex(val => val._id === article);
+    state.articles.splice(articleIdx, 1);
   }
 }
 
@@ -99,6 +103,13 @@ const actions = {
     commit('LOGOUT', data, false);
     commit('EMPTY_ARTICLES')
     console.log('sukses logout');
+  },
+  deleteArticle({commit}, articleId) {
+    axios.delete(`http://localhost:3000/api/article/delete/${articleId}`, {headers: {token: localStorage.getItem('token')}})
+    .then(res => {
+      commit('DELETE_ARTICLE', articleId);
+    })
+    
   }
 }
 
