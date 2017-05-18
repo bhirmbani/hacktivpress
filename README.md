@@ -1,13 +1,13 @@
-#hacktivpress
+# hacktivpress
 A simple CMS blog using express as a backend, mongoose as ODM and vue as front end framework.
 
-###Installation
+### Installation
 1. Go to server folder and type `npm install`
 2. Go to client folder and type `npm install`
 3. In server folder type `npm start`
 4. In client folder type `npm run dev`
 
-###REST API
+### REST API
 List of user routes:
 
 |Route|HTTP|Description|
