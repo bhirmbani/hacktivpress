@@ -7,11 +7,13 @@ const state = {
   articles: [],
   newArticle: {
     title: '',
-    content: ''
+    content: '',
+    category: '',
   },
   emptyArticleState: {
     title: '',
-    content: ''
+    content: '',
+    category: ''
   },
   login: {
     username: '',
@@ -58,6 +60,9 @@ const mutations = {
   DELETE_ARTICLE(state, article) {
     let articleIdx = state.articles.findIndex(val => val._id === article);
     state.articles.splice(articleIdx, 1);
+  },
+  ADD_ARTICLE(state, article) {
+    state.newArticle = article;
   }
 }
 
@@ -109,7 +114,16 @@ const actions = {
     .then(res => {
       commit('DELETE_ARTICLE', articleId);
     })
-    
+  },
+  addArticle({commit}, data) {
+    axios.post(`http://localhost:3000/api/article/create`, {
+      title: data.title,
+      content: data.content,
+      category: data.category
+    }, {headers: {token: localStorage.getItem('token')}}).then(res => {
+      console.log('ADD_ARTICLE', res.data.article);
+      commit('ADD_ARTICLE', res.data.article);
+    })
   }
 }
 
@@ -125,6 +139,9 @@ const getters = {
   },
   emptyLoggedUserData(state) {
     return state.emptyLoggedUser;
+  },
+  newArticle(state) {
+    return state.newArticle;
   }
 }
 

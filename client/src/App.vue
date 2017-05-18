@@ -6,10 +6,10 @@
         <i class="fa fa-bullhorn" aria-hidden="true"></i>
           Hacktivpress
         </a>
-        <!-- <a v-if="isLogin">
-          <router-link class="header item" :to="{name: 'AddTodo'}">Add New Todo</router-link>
+        <a v-if="">
+          <router-link class="header item" :to="{name: 'AddArticle'}">Add New Article</router-link>
         </a>
-        <a v-if="isLogin" class="header item">
+        <!-- <a v-if="isLogin" class="header item">
           Welcome, {{loggedUserData.name}}
         </a> -->
         <a href="#/" @click="onLogout(emptyLoggedUserData)" v-if="" class="header item">

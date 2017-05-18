@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Main from '@/components/Main'
+import AddArticle from '@/components/AddArticle'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path:'/main',
       name: 'Main',
       component: Main
+    },
+    {
+      path:'/add-article',
+      name: 'AddArticle',
+      component: AddArticle
     }
   ]
 })
