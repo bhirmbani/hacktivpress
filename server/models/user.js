@@ -11,6 +11,9 @@ let userSchema = new Schema({
   password: {
       type: String
   },
+  role: {
+      type: String
+  }
 })
 
 let User = mongoose.model('User', userSchema);
