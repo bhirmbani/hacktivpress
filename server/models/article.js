@@ -11,7 +11,7 @@ let articleSchema = new Schema({
   category: {
       type: String
   },
-  author: [{Schema.Types: ObjectId, ref: 'User'}]
+  author: {type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 let Article = mongoose.model('Article', articleSchema);

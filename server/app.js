@@ -27,11 +27,11 @@ app.use(passport.initialize());
 
 // routes
 const user = require('./routes/user');
-// const article = require('./routes/article');
+const article = require('./routes/article');
 
 // use the routes
 app.use('/api/user', user);
-// app.use('/api/article', article);
+app.use('/api/article', article);
 
 app.listen(app.get('port'), () => {
   console.log(`app listening on ${app.get('port')}`);

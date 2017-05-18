@@ -25,5 +25,5 @@ List of article routes:
 |/api/article/edit/:articleId|PUT|update one article|
 |/api/article/:userId|GET|get one article based on its author|
 |/api/article/:categoryName|GET|get one article based on its category|
-|/api/article/delete/articleId|DELETE|delete one article|
+|/api/article/delete/:articleId|DELETE|delete one article|
 
