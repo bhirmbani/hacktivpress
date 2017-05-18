@@ -65,4 +65,15 @@ methods.delete = (req, res, next) => {
   })
 }
 
+methods.getByCategory = (req, res, next) => {
+  let category = req.params.category;
+  Article.find({category: category}, (err, articles) => {
+    if(err) {
+      res.json({error: err, success: false});
+    } else {
+      res.json({articles: articles, success: true});
+    }
+  })
+}
+
 module.exports = methods;
