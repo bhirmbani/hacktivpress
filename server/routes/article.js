@@ -11,4 +11,6 @@ router.get('/:articleId', auth.isLogin, Article.getOne);
 
 router.put('/edit/:articleId', auth.isLogin, Article.edit);
 
+router.delete('/delete/:articleId', auth.isLogin, Article.delete);
+
 module.exports = router;
