@@ -8,8 +8,8 @@
         <label for="category">Kategori:</label>
         <input name="category" type="text" placeholder="Kategori artikel ini" class="input" v-model="newArticle.category">
         <div class="field">
-          <label class="input" for="content">Deskripsi:</label>
-          <textarea name="content" placeholder="Deskripsikan lebih jauh tentang apa yang akan kamu lakukan.." rows="2" style="margin-top: 0px; margin-bottom: 0px; height: 58px;" v-model="newArticle.content"></textarea>
+          <label class="input" for="content">Isi:</label>
+          <textarea name="content" placeholder="Isi artikel kamu.." rows="2" style="margin-top: 0px; margin-bottom: 0px; height: 58px;" v-model="newArticle.content"></textarea>
         </div>
         
         <a href="#/main"><button @click="addArticle(newArticle)" class="ui primary button">Submit</button></a>
