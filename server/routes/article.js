@@ -5,4 +5,6 @@ const Article = require('../controllers/article');
 
 router.post('/create', auth.isLogin, Article.create);
 
+router.get('/', auth.isLogin, Article.getAll);
+
 module.exports = router;
