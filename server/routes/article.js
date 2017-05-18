@@ -9,4 +9,6 @@ router.get('/', auth.isLogin, Article.getAll);
 
 router.get('/:articleId', auth.isLogin, Article.getOne);
 
+router.put('/edit/:articleId', auth.isLogin, Article.edit);
+
 module.exports = router;
