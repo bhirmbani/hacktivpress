@@ -47,6 +47,13 @@ const mutations = {
   },
   GET_ARTICLES(state, payload) {
     state.articles = payload
+  },
+  LOGOUT(state, payload, status) {
+    state.loggedUser = payload;
+    state.isLogin = status;
+  },
+  EMPTY_ARTICLES(state) {
+    state.articles = [];
   }
 }
 
@@ -82,6 +89,16 @@ const actions = {
       console.log('GET_ARTICLES', res.data.articles);
       commit('GET_ARTICLES', res.data.articles);
     })
+  },
+  logout({commit}, data, status) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('_id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    commit('LOGOUT', data, false);
+    commit('EMPTY_ARTICLES')
+    console.log('sukses logout');
   }
 }
 
@@ -94,6 +111,9 @@ const getters = {
   },
   articles(state) {
     return state.articles;
+  },
+  emptyLoggedUserData(state) {
+    return state.emptyLoggedUser;
   }
 }
 

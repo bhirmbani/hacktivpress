@@ -12,9 +12,9 @@
         <a v-if="isLogin" class="header item">
           Welcome, {{loggedUserData.name}}
         </a> -->
-        <!-- <a href="#/" @click="onLogout(emptyLoggedUserData)" v-if="isLogin" class="header item">
+        <a href="#/" @click="onLogout(emptyLoggedUserData)" v-if="" class="header item">
           Logout
-        </a> -->
+        </a>
       </div>
     </div> 
     <router-view></router-view>
@@ -22,8 +22,23 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    ...mapGetters([
+      'emptyLoggedUserData',
+  ])
+  },
+  methods: {
+    ...mapActions([
+      'logout'
+  ]),
+    onLogout(data) {
+      this.logout(data)
+    }
+  }
 }
 </script>
 
